@@ -117,9 +117,7 @@ if (!$koneksi) {
 - Data yang diambil kemudian ditampilkan dalam tabel menggunakan tag HTML.
 
 ## **Langkah 4: Membuat Halaman Tambah Data:**
-1. Buat file baru dengan nama "tambah.php" dan simpan di direktori
-
- proyek Anda.
+1. Buat file baru dengan nama "tambah.php" dan simpan di direktori proyek Anda.
 2. Isi file "tambah.php" dengan kode berikut:
 
 ```php
