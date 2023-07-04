@@ -62,6 +62,11 @@ if (!$koneksi) {
 ?>
 ```
 
+- File ini digunakan untuk membuat koneksi ke database MySQL.
+- `$host`, `$username`, `$password`, dan `$database` adalah variabel yang berisi informasi koneksi database, seperti nama host, username, password, dan nama database.
+- Fungsi `mysqli_connect()` digunakan untuk menghubungkan ke server database.
+- Jika koneksi gagal, fungsi `mysqli_connect_error()` akan menampilkan pesan error.
+
 ## **Langkah 3: Membuat Halaman Tampilan:**
 1. Buat file baru dengan nama "index.php" dan simpan di direktori proyek Anda.
 2. Isi file "index.php" dengan kode berikut:
@@ -104,6 +109,12 @@ if (!$koneksi) {
 </body>
 </html>
 ```
+- File ini adalah halaman utama yang menampilkan daftar data dari tabel "users".
+- Tag `<table>` digunakan untuk membuat tabel.
+- Bagian PHP `include 'koneksi.php';` digunakan untuk menghubungkan file "koneksi.php" agar koneksi database tersedia.
+- Fungsi `mysqli_query()` digunakan untuk mengeksekusi query SELECT untuk mendapatkan data dari tabel "users".
+- Fungsi `mysqli_fetch_array()` digunakan untuk mengambil setiap baris hasil query sebagai array asosiatif.
+- Data yang diambil kemudian ditampilkan dalam tabel menggunakan tag HTML.
 
 ## **Langkah 4: Membuat Halaman Tambah Data:**
 1. Buat file baru dengan nama "tambah.php" dan simpan di direktori
@@ -134,6 +145,11 @@ if (!$koneksi) {
 </body>
 </html>
 ```
+- File ini adalah halaman untuk menambahkan data baru ke tabel "users".
+- Tag `<form>` digunakan untuk membuat form input.
+- Atribut `method="POST"` menentukan bahwa data akan dikirim melalui metode POST.
+- Atribut `action="simpan.php"` menentukan file yang akan dipanggil untuk menyimpan data.
+- Fungsi `mysqli_query()` digunakan untuk mengeksekusi query INSERT untuk menyimpan data baru ke tabel "users".
 
 ## **Langkah 5: Membuat Halaman Simpan Data:**
 1. Buat file baru dengan nama "simpan.php" dan simpan di direktori proyek Anda.
@@ -156,6 +172,11 @@ if ($query) {
 }
 ?>
 ```
+
+- File ini digunakan untuk menyimpan data yang diinputkan dari form "tambah.php" ke dalam tabel "users".
+- Data yang diambil dari form disimpan dalam variabel `$name`, `$email`, dan `$phone`.
+- Fungsi `mysqli_query()` digunakan untuk mengeksekusi query INSERT untuk menyimpan data baru ke tabel "users".
+- Jika query berhasil, pengguna akan diarahkan kembali ke halaman utama "index.php", jika tidak, akan ditampilkan pesan error.
 
 ## **Langkah 6: Membuat Halaman Edit Data:**
 1. Buat file baru dengan nama "edit.php" dan simpan di direktori proyek Anda.
@@ -193,6 +214,11 @@ $data = mysqli_fetch_array($query);
 </body>
 </html>
 ```
+- File ini adalah halaman untuk mengedit data yang ada di tabel "users".
+- Variabel `$id` diambil dari parameter GET untuk menentukan data yang akan diedit.
+- Fungsi `mysqli_query()` digunakan untuk mengeksekusi query SELECT untuk mendapatkan data pengguna yang akan diubah.
+- Data yang diambil dari query ditampilkan dalam form input.
+- Ketika tombol "Update" ditekan, data yang diubah akan disimpan melalui file "update.php".
 
 ## **Langkah 7: Membuat Halaman Update Data:**
 1. Buat file baru dengan nama "update.php" dan simpan di direktori proyek Anda.
@@ -216,10 +242,15 @@ if ($query) {
 }
 ?>
 ```
+- File ini digunakan untuk mengupdate data yang diubah dari form "edit.php" ke dalam tabel "users".
+- Variabel `$id`, `$name`, `$email`, dan `$phone` diambil dari form input.
+- Fungsi `mysqli_query()` digunakan untuk mengeksekusi query UPDATE untuk memperbarui data di tabel "users".
+- Jika query berhasil, pengguna akan diarahkan kembali ke halaman utama "index.php", jika tidak, akan ditampilkan pesan error.
+
 
 ## **Langkah 8:**
 
- Membuat Halaman Hapus Data:**
+ **Membuat Halaman Hapus Data:**
 1. Buat file baru dengan nama "hapus.php" dan simpan di direktori proyek Anda.
 2. Isi file "hapus.php" dengan kode berikut:
 
@@ -238,3 +269,7 @@ if ($query) {
 }
 ?>
 ```
+- File ini digunakan untuk menghapus data dari tabel "users".
+- Variabel `$id` diambil dari parameter GET untuk menentukan data yang akan dihapus.
+- Fungsi `mysqli_query()` digunakan untuk mengeksekusi query DELETE untuk menghapus data dari tabel "users".
+- Jika query berhasil, pengguna akan diarahkan kembali ke halaman utama "index.php", jika tidak, akan ditampilkan pesan error.
