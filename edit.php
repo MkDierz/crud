@@ -15,7 +15,7 @@ $data = mysqli_fetch_array($query);
 
 <body>
 	<h1>Edit Data</h1>
-	<form method="POST" action="update.php">
+	<form method="POST" action="update.php" enctype="multipart/form-data">
 		<input type="hidden" name="id"
 			value="<?php echo $data['id']; ?>">
 		<label>Nama:</label>
@@ -30,8 +30,11 @@ $data = mysqli_fetch_array($query);
 		<br><br>
 		<label>Telepon:</label>
 		<input type="text" name="phone"
-			value="<?php echo $data['phone']; ?>"
-			required>
+		value="<?php echo $data['phone']; ?>"
+		required>
+		<br><br>
+		<label>Foto:</label>
+		<input type="file" name="photo" required>
 		<br><br>
 		<button type="submit">Update</button>
 	</form>

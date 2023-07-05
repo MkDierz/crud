@@ -7,10 +7,20 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 
-$query = mysqli_query($koneksi, "UPDATE users SET name='$name', email='$email', phone='$phone' WHERE id='$id'");
+$photo = $_FILES['photo']['name'];
+$tmp_name = $_FILES['photo']['tmp_name'];
 
-if ($query) {
-    header('Location: index.php');
+$dir = "uploads/";
+
+$uploaded = move_uploaded_file($tmp_name, $dir.$photo);
+
+if ($uploaded) {
+    $query = mysqli_query($koneksi, "UPDATE users SET name='$name', email='$email', phone='$phone', photo='$photo' WHERE id='$id'");
+    if ($query) {
+        header('Location: index.php');
+    } else {
+        echo "Gagal menyimpan data";
+    }
 } else {
-    echo "Gagal mengupdate data";
+    echo "Gagal menyimpan data";
 }
